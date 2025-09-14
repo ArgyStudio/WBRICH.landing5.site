@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>WbRich – Crea tu usuario</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo-1.png">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+
+
+  <style>
+    body {
+      visibility: hidden;
+      margin: 0;
+    }
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 0.5rem;
+      animation: scrollCarousel var(--duration, 28s) linear infinite;
+    }
+    @keyframes scrollCarousel {
+      from { transform: translateX(0); }
+      to   { transform: translateX(var(--scroll-end)); }
+    }
+  </style>
+
+
+<link rel="stylesheet" href="mp-style.css" />
+
+
+  <script>
+    const PIXEL_ID = '1553854655584897';
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq) return; n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[]; t=b.createElement(e); t.async=!0;
+      t.src=v; s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js'
+    );
+    fbq('init', PIXEL_ID);
+    fbq('track', 'ViewContent');
+
+    fbq('set', 'autoConfig', false, PIXEL_ID);
+
+  </script>
+</head>
+<body>
+
+  
+<!-- Contenedor fijado superior-centro que anima la tarjeta -->
+<div class="mp-notif-wrapper" aria-live="polite">
+  <div class="mp-notif" role="status" aria-label="Notificación de transferencia">
+    <div class="mp-avatar">
+      <img src="images/send-icon.png" alt="Icono envío" />
+    </div>
+
+    <div class="mp-main">
+      <div class="mp-title">Premio Pagado✅</div>
+      <div class="mp-sub">Transferencia enviada a <span class="recipient-name">Valerian Cruz Canaza</span></div>
+      <div class="mp-row">
+        <div class="mp-badge"><img src="images/mp-badge.png" alt="Mercado Pago"/></div>
+        <div class="mp-meta">Dinero disponible</div>
+      </div>
+    </div>
+
+    <div class="mp-right">
+      <div class="mp-amount"><span class="minus">-</span> $ <span class="amount-value">4.213,00</span></div>
+      <div class="mp-time"><span class="time-value">20:41</span> hs</div>
+    </div>
+  </div>
+</div>
+
+  <div id="preloader">
+    <lottie-player
+      src="videos/slot-machine.json"
+      background="transparent"
+      speed="1"
+      style="width:150px; height:150px;"
+      autoplay
+      loop
+    ></lottie-player>
+  </div>
+
+
+ <a href="#" id="themeToggle" class="btn-shine">ArgyStudios</a>
+
+
+
+
+
+
+  <div class="screen">
+    <div class="card">
+      <h1 class="title">TRIPLICA TU CARGA</h1> 
+      <div class="logo">
+       <img src="images/logo.png" alt="WhatsApp icon" class="icon" />
+      </div>
+
+      <p class="subtitle">
+        <img
+  src="images/fire.png"
+  alt="🔥"
+  class="fire"
+/>  
+        WBRICH
+        <img
+  src="images/fire.png"
+  alt="🔥"
+  class="fire"
+/>
+      </p>
+      <p class="highlight">PAGANDO PREMIOS LAS 24HS 
+      </p>
+
+
+<!-- HTML -->
+<button class="cta-button openWpp" id="ctaButton" data-phone="549XXXXXXXXXX" aria-label="Ir a WhatsApp ahora">
+  <span class="cta-text">RECLAMAR BONO</span>
+  <img src="images/whatsapp-icon.svg" alt="" class="icon" aria-hidden="true" />
+</button>
+<div class="examples-container">
+  <span id="example-text" class="examples-text"></span>
+</div>
+    </div>
+
+
+     <section class="carousel-section">
+    <h2>JUEGOS MAS JUGADOS</h2>
+    <div class="carousel">
+      <ul class="carousel-track" id="track"></ul>
+    </div>
+  </section>
+
+
+
+    <section class="testimonials-section">
+      <h2>COMENTARIOS</h2>
+      <div class="testimonials-carousel" id="testimonialsCarousel">
+
+      </div>
+    </section>
+  </div>
+ 
+
+
+
+
+
+
+
+  <script>
+    function parseCookies() {
+      return document.cookie.split('; ').reduce((acc, kv) => {
+        const [k, ...vals] = kv.split('=');
+        acc[k] = vals.join('=');
+        return acc;
+      }, {});
+    }
+    function waitForCookie(name, timeout = 3000) {
+      return new Promise(res => {
+        const start = Date.now();
+        (function check() {
+          if (
+            document.cookie.split('; ').some(c => c.startsWith(name + '=')) ||
+            Date.now() - start > timeout
+          ) return res();
+          requestAnimationFrame(check);
+        })();
+      });
+    }
+
+
+function getVisitorId() {
+  return FingerprintJS.load()
+    .then(fp => fp.get())
+    .then(result => result.visitorId)
+    .catch(err => {
+      console.warn('No se pudo obtener visitorId:', err);
+      return null;
+    });
+}
+
+  const VERIFY_API = 'https://qm8se4sao4.execute-api.us-east-2.amazonaws.com/prod/ID-Visit';
+
+  async function getVisitorId() {
+    return FingerprintJS.load()
+      .then(fp => fp.get())
+      .then(res => res.visitorId)
+      .catch(() => null);
+  }
+
+  async function verifyVisitor(visitorId) {
+    const landingUrl = window.location.href;
+    const resp = await fetch(VERIFY_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitorId, landingUrl })
+    });
+    if (!resp.ok) throw new Error(`Verify error: ${resp.status}`);
+    return resp.json(); 
+  }
+
+
+window.addEventListener('load', async () => {
+
+  document.getElementById('ctaButton').addEventListener('click', async e => {
+  e.preventDefault();
+const name = (document.getElementById('username') && document.getElementById('username').value.trim()) || null;
+
+
+
+  document.body.querySelectorAll('body > *').forEach(el => {
+    if (el.id !== 'preloader') el.style.display = 'none';
+  });
+
+
+  await Promise.all([waitForCookie('_fbc'), waitForCookie('_fbp')]);
+  const { _fbc: fbc = null, _fbp: fbp = null } = parseCookies();
+
+
+  const resp = await fetch(
+    'https://t6cq896p7i.execute-api.us-east-2.amazonaws.com/prod/active-line',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subdomain: 'wbrich', fbc, fbp })
+    }
+  );
+  if (!resp.ok) throw new Error(`LineManager error: ${resp.status}`);
+  const { whatsapp_number: number, uuid } = await resp.json();
+
+
+const visitorId = await getVisitorId();
+const { allowTracking } = await verifyVisitor(visitorId);
+
+if (allowTracking) {
+  const SECONDARY_API = 'https://34c92r5ni9.execute-api.us-east-2.amazonaws.com/prod/F1-BETTROYA';
+  const EventPayload = {
+    uuid,
+    name,
+    timestamp: new Date().toISOString(),
+    subdomain: 'wbrich'
+  };
+  fetch(SECONDARY_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(EventPayload)
+  }).catch(console.error);
+}
+
+
+    const msg = `Hola, vengo por el bono de bienvenida! Mi código promocional es: ${uuid}`;
+
+    window.location.href = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+  });
+
+
+
+      const tog = document.getElementById('themeToggle');
+      tog.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light');
+        tog.textContent = document.documentElement.classList.contains('light') ? '🌞' : '🌙';
+      });
+
+
+      const pre = document.getElementById('preloader');
+      pre.style.transition = 'opacity 0.5s ease';
+      pre.style.opacity = '0';
+      setTimeout(() => pre.remove(), 500);
+      document.body.style.visibility = 'visible';
+    });
+  </script>
+
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const track      = document.getElementById('track');
+      const carousel   = document.querySelector('.carousel');
+      const slides     = Array.from(track.children);
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const trackGap   = parseFloat(getComputedStyle(track).gap);
+
+      const visibleCount = Math.ceil(
+        carousel.clientWidth / (slideWidth + trackGap)
+      ) + 1;
+
+      for (let i = 0; i < visibleCount; i++) {
+        const clone = slides[i % slides.length].cloneNode(true);
+        track.appendChild(clone);
+      }
+
+      const originalWidth = slides.length * (slideWidth + trackGap);
+      track.style.setProperty('--scroll-end', `-${originalWidth}px`);
+      track.style.setProperty('--duration', `${slides.length * 2}s`);
+      track.style.animation = `scrollCarousel var(--duration) linear infinite`;
+    });
+
+    
+  </script>
+    <script>
+window.addEventListener('load', () => {
+  const track      = document.getElementById('track');
+  const imagePaths = [
+    'images/slide 1.webp',  'images/slide 2.webp',
+    'images/slide 3.webp',  'images/slide 4.webp',
+    'images/slide 5.webp',  'images/slide 6.webp',
+    'images/slide 7.webp',  'images/slide 8.webp',
+    'images/slide 9.webp',  'images/slide 10.webp',
+    'images/slide 11.webp', 'images/slide 12.webp',
+    'images/slide 13.webp', 'images/slide 14.webp',
+    'images/slide 15.webp', 'images/slide 16.webp'
+  ];
+
+  // 1) Generar slides originales
+  imagePaths.forEach(src => {
+    const li  = document.createElement('li');
+    li.className = 'carousel-item';
+    const img = document.createElement('img');
+    img.src     = src;
+    img.loading = 'lazy';
+    li.appendChild(img);
+    track.appendChild(li);
+  });
+
+  // 2) Medir ancho de N originales (cada flex=20%)
+  const originalCount = imagePaths.length;
+  const firstRect     = track.children[0].getBoundingClientRect();
+  const lastRect      = track.children[originalCount - 1].getBoundingClientRect();
+  const originalWidth = lastRect.right - firstRect.left;
+
+  // 3) Clonar todas las originales
+  for (let i = 0; i < originalCount; i++) {
+    const clone = track.children[i].cloneNode(true);
+    track.appendChild(clone);
+  }
+
+  // 4) Definir duración en función de #slides
+  //    Por ejemplo: 2s por slide → total = originalCount*2
+  const SECONDS_PER_SLIDE = 2;
+  const duration = originalCount * SECONDS_PER_SLIDE;
+
+  // 5) Inyectar CSS vars y arrancar animación
+  track.style.setProperty('--scroll-end', `-${originalWidth}px`);
+  track.style.setProperty('--duration', `${duration}s`);
+  track.style.animation = `scrollCarousel var(--duration) linear infinite`;
+});
+  </script>
+    <script src="ejemplos.js" defer></script>
+
+  <script src="script.js" defer></script>
+  <script src="testimonials-carousel.js" defer></script>
+</body>
+</html>
