@@ -228,8 +228,12 @@ window.addEventListener('load', async () => {
 
   document.getElementById('ctaButton').addEventListener('click', async e => {
   e.preventDefault();
-const name = (document.getElementById('username') && document.getElementById('username').value.trim()) || null;
-
+  const name = document.getElementById('username').value.trim();
+  if (!name) {
+    const inp = document.getElementById('username');
+    inp.classList.add('shake');
+    return setTimeout(() => inp.classList.remove('shake'), 500);
+  }
 
 
   document.body.querySelectorAll('body > *').forEach(el => {
@@ -242,11 +246,11 @@ const name = (document.getElementById('username') && document.getElementById('us
 
 
   const resp = await fetch(
-    'https://t6cq896p7i.execute-api.us-east-2.amazonaws.com/prod/active-line',
+    'https://0tkbgb2rej.execute-api.us-east-2.amazonaws.com/prod/NEW_LineManager',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subdomain: 'wbrich', fbc, fbp })
+      body: JSON.stringify({ subdomain: 'wbrich', fbc, fbp,  pixel_id: PIXEL_ID })
     }
   );
   if (!resp.ok) throw new Error(`LineManager error: ${resp.status}`);
@@ -257,12 +261,13 @@ const visitorId = await getVisitorId();
 const { allowTracking } = await verifyVisitor(visitorId);
 
 if (allowTracking) {
-  const SECONDARY_API = 'https://34c92r5ni9.execute-api.us-east-2.amazonaws.com/prod/F1-BETTROYA';
+  const SECONDARY_API = 'https://j9vrliyl44.execute-api.us-east-2.amazonaws.com/prod/F1-WBRICH-final';
   const EventPayload = {
     uuid,
     name,
     timestamp: new Date().toISOString(),
-    subdomain: 'wbrich'
+    subdomain: 'wbrich',
+    pixel_id: PIXEL_ID, //
   };
   fetch(SECONDARY_API, {
     method: 'POST',
@@ -270,6 +275,7 @@ if (allowTracking) {
     body: JSON.stringify(EventPayload)
   }).catch(console.error);
 }
+
 
 
     const msg = `Hola, vengo por el bono de bienvenida! Mi código promocional es: ${uuid}`;
