@@ -228,12 +228,8 @@ window.addEventListener('load', async () => {
 
   document.getElementById('ctaButton').addEventListener('click', async e => {
   e.preventDefault();
-  const name = document.getElementById('username').value.trim();
-  if (!name) {
-    const inp = document.getElementById('username');
-    inp.classList.add('shake');
-    return setTimeout(() => inp.classList.remove('shake'), 500);
-  }
+const name = (document.getElementById('username') && document.getElementById('username').value.trim()) || null;
+
 
 
   document.body.querySelectorAll('body > *').forEach(el => {
@@ -245,6 +241,7 @@ window.addEventListener('load', async () => {
   const { _fbc: fbc = null, _fbp: fbp = null } = parseCookies();
 
 
+  
   const resp = await fetch(
     'https://0tkbgb2rej.execute-api.us-east-2.amazonaws.com/prod/NEW_LineManager',
     {
@@ -275,7 +272,6 @@ if (allowTracking) {
     body: JSON.stringify(EventPayload)
   }).catch(console.error);
 }
-
 
 
     const msg = `Hola, vengo por el bono de bienvenida! Mi código promocional es: ${uuid}`;
